@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Happy Birthday Momoooo💖</title>
+<title>Happy Birthday 💖</title>
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&family=Great+Vibes&family=Cormorant+Garamond:ital,wght@1,500&display=swap" rel="stylesheet">
 <style>
 :root{--pink:#ff4d8d;--gold:#ffd166;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -286,8 +286,8 @@ const SHAYARI = [
 const LETTER = "Meri Momoo,\n\nAaj ka din sirf tumhara hai, kyunki aaj hi is duniya ko tum jaisa tohfa mila.\n\nTumne meri zindagi ko rang diye, meri khamoshi ko awaaz di aur meri har subah ko tumhari muskaan se roshan kiya. Tum mere liye sirf mohabbat nahi, meri aadat, meri dua aur mera ghar ho.\n\nWada hai — har mushkil mein tumhara haath thamunga, har khushi mein sabse pehle tumhe yaad karunga.\n\n“Love is not about finding someone to live with, it's about finding someone you can't live without.”\n\nInshallah, Allah will bring us together forever. This might be our dream right now, but inshallah, soon we will make it come true. 🤲\n\nHappy Birthday, meri zindagi! 🎂\n\nHamesha tumhara ❤️";
 const WISH=["Happy Birthday, meri jaan 🎂💖","May every dua you whisper come true ✨","You are my today, my tomorrow, my always 💍","Your smile is the reason my days begin 🌅","Allah ne tumhe mere liye chuna, Alhamdulillah 🤲","You are the best thing that ever happened to me 🍀","May this year bring you all the joy you give me 🌹","Tumse hi meri duniya roshan hai 🌙","I fall for you a little more every single day 💕","You make ordinary days feel like magic ✨","Stay as beautiful inside as you are outside 🌸","Meri har khushi ka address ho tum 🏡","Tum ho toh sab kuch hai, tum nahi toh kuch nahi 💗","Today the whole world celebrates my favourite person 🥰","Forever isn't long enough with you ♾️","Happy Birthday, queen of my heart 👑"];
 
-// Final picture shown at the end of the letter: put a photo file name (e.g. "us.jpg"); leave "" to show a placeholder frame
-const FINAL_PHOTO = "";
+// Final picture shown at the end of the letter.
+const FINAL_PHOTO = "MAIN.jpeg";
 const FINAL_CAP = "Inshallah, forever us 🤍";
 const SECRET="You found the secret gift! 🎁 Your real surprise is waiting: a day planned by me, just for you. Get ready, birthday girl 💖";
 /* ==================================== */
@@ -429,7 +429,7 @@ $('open').onclick=()=>{$('gl').classList.remove('on');document.body.classList.re
  const run=e=>{e.preventDefault();$('np').textContent=M[n++%M.length];sc+=.18;yes.style.transform='scale('+sc+')';
   no.style.position='fixed';no.style.left=Math.random()*(W-110)+'px';no.style.top=Math.random()*(H-60)+'px';no.style.zIndex=5};
  no.onmouseover=no.ontouchstart=no.onclick=run;
- yes.onclick=async()=>{document.body.classList.remove('day');show('s6');setInterval(()=>burst(Math.random()*W,Math.random()*H*.6),700);confetti(250);const iv=setInterval(()=>$('letter').scrollTop=1e5,200);await type($('letter'),LETTER,32);clearInterval(iv);const fp=document.createElement('div');fp.className='fpic';fp.innerHTML=(FINAL_PHOTO?`<img src="${FINAL_PHOTO}" alt="">`:'<div class="fph">📷<small>Your couple photo here</small></div>')+`<p>${FINAL_CAP}</p>`;$('letter').appendChild(fp);setTimeout(()=>$('letter').scrollTo({top:1e5,behavior:'smooth'}),300)}};
+ yes.onclick=async()=>{document.body.classList.remove('day');show('s6');setInterval(()=>burst(Math.random()*W,Math.random()*H*.6),700);confetti(250);const iv=setInterval(()=>$('letter').scrollTop=1e5,200);await type($('letter'),LETTER,32);clearInterval(iv);const fp=document.createElement('div');fp.className='fpic';if(FINAL_PHOTO){const img=document.createElement('img');img.src=photoUrl(FINAL_PHOTO);img.alt=FINAL_CAP;fp.appendChild(img)}else{const placeholder=document.createElement('div');placeholder.className='fph';placeholder.innerHTML='📷<small>Your couple photo here</small>';fp.appendChild(placeholder)}const caption=document.createElement('p');caption.textContent=FINAL_CAP;fp.appendChild(caption);$('letter').appendChild(fp);setTimeout(()=>$('letter').scrollTo({top:1e5,behavior:'smooth'}),300)}};
 </script>
 </body>
 </html>
