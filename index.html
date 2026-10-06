@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Happy Birthday 💖</title>
+<title>Happy Birthday Momoooooo💖</title>
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&family=Great+Vibes&family=Cormorant+Garamond:ital,wght@1,500&display=swap" rel="stylesheet">
 <style>
 :root{--pink:#ff4d8d;--gold:#ffd166;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -132,6 +132,7 @@ body.meadow #gal:not(:empty)::before{display:block}
 #gal .pol::before{content:"💗";top:-13px;left:38%;font-size:1rem;z-index:1}
 #gal .pol:nth-child(1){margin-top:17px}#gal .pol:nth-child(2){margin-top:31px}#gal .pol:nth-child(3){margin-top:36px}#gal .pol:nth-child(4){margin-top:31px}#gal .pol:nth-child(5){margin-top:17px}
 #gal .pol{box-shadow:0 8px 20px #0005,0 0 14px #ffd1e6}
+.pol .photo img,.mp .photo img{display:block;width:100%;height:100%;object-fit:cover}
 
 body.meadow #shay{background:#ffffffd9}
 #s5{padding-bottom:66px}
@@ -259,18 +260,18 @@ const INIT = "Z";   // letter shown inside the heart and carved on the tree
 const YOU = "Your Name";   // your name (first letter is carved on the tree trunk)
 // Photos: put files next to this HTML and write names, e.g. "her1.jpg". Mix photos of her and of you both.
 const PHOTOS = [
-  {src:"", cap:"The day I knew you were my forever ❤️"},
-  {src:"", cap:"You + Me = my favourite story"},
-  {src:"", cap:"Your smile is my sunrise ☀️"},
-  {src:"", cap:"Every moment with you is a memory I treasure"},
-  {src:"", cap:"Together is my favourite place to be 💑"}
+  {src:"DSL 1.jpeg", cap:"The day I knew you were my forever ❤️"},
+  {src:"COP4.jpeg", cap:"You + Me = my favourite story"},
+  {src:"DSL 3.jpeg", cap:"Your smile is my sunrise ☀️"},
+  {src:"COP7.jpeg", cap:"Every moment with you is a memory I treasure"},
+  {src:"PAPA 2.jpeg", cap:"Together is my favourite place to be 💑"}
 ];
 // ===== OUR BEAUTIFUL MOMENTS GALLERY (12 photos, add your own) =====
 // Put your photo files next to this HTML and write the file names in src, e.g. "m1.jpg". Add or remove lines as you like.
 const MOMENTS = [
-  {src:"", cap:"Our first picture together 💞"},{src:"", cap:"That smile 😍"},{src:"", cap:"Chai date ☕"},{src:"", cap:"Just us 🤍"},
-  {src:"", cap:"My favourite person"},{src:"", cap:"Laughing together 😂"},{src:"", cap:"Golden hour 🌅"},{src:"", cap:"You, always you 💖"},
-  {src:"", cap:"Pure happiness ✨"},{src:"", cap:"Never forgetting this day"},{src:"", cap:"Us against the world 🌍"},{src:"", cap:"Forever starts here 💍"}
+  {src:"DSL 2.jpeg", cap:"The Cuteness 💞"},{src:"COP5.jpeg", cap:"That smile 😍"},{src:"COUPLE 2.jpeg", cap:"My world buty is here"},{src:"DSL 7.jpeg", cap:"Just us 🤍"},
+  {src:"DSL 4.jpeg", cap:"My favourite person"},{src:"COP6.jpeg", cap:"Laughing together 😂"},{src:"COUPLE 3.jpeg", cap:"Melting Eyes 🌅"},{src:"DSL 2.jpeg", cap:"You, always you 💖"},
+  {src:"DSL 5.jpeg", cap:"Pure happiness ✨"},{src:"COUPLE1.jpeg", cap:"Never forgetting this day"},{src:"DSL 7.jpeg", cap:"Us against the world 🌍"},{src:"DSL 1.jpeg", cap:"Forever starts here 💍"}
 ];
 const SHAYARI = [
  "Sitaaron se poocha maine, koi tumse roshan hai?\nUnhone kaha — haan, tumhari muskaan hai ✨",
@@ -291,7 +292,7 @@ const FINAL_CAP = "Inshallah, forever us 🤍";
 const SECRET="You found the secret gift! 🎁 Your real surprise is waiting: a day planned by me, just for you. Get ready, birthday girl 💖";
 /* ==================================== */
 
-const $=id=>document.getElementById(id),sleep=ms=>new Promise(r=>setTimeout(r,ms));
+const $=id=>document.getElementById(id),sleep=ms=>new Promise(r=>setTimeout(r,ms)),photoUrl=src=>encodeURIComponent(src);
 const show=id=>{document.querySelectorAll('.scr').forEach(s=>s.classList.remove('on'));$(id).classList.add('on')};
 const cv=$('cv'),cx=cv.getContext('2d'),tc=$('tree'),tx=tc.getContext('2d');let W,H,parts=[];
 const rs=()=>{W=cv.width=tc.width=innerWidth;H=cv.height=tc.height=innerHeight};rs();addEventListener('resize',rs);
@@ -325,7 +326,7 @@ $('go').onclick=async()=>{music();show('s2');
   b.style.left=Math.random()*(innerWidth-80)+'px';b.style.animationDuration=(6+Math.random()*5)+'s';
   b.style.background=`radial-gradient(circle at 35% 30%,#fff7,${cols[i%6]} 55%,#0005)`;
   const ph=PHOTOS[i%PHOTOS.length];
-  if(i%4==3&&ph.src){b.style.backgroundImage=`url(${ph.src})`;b.style.border='4px solid '+cols[i%6]}
+  if(i%4==3&&ph.src){b.style.backgroundImage=`url("${photoUrl(ph.src)}")`;b.style.border='4px solid '+cols[i%6]}
   else b.textContent=i<13?L[i]:['❤️','💖','🥰','😘','💕'][i%5];
   b.onclick=e=>{hearts(e.clientX,e.clientY);burst(e.clientX,e.clientY);b.remove()};
   box.appendChild(b);await sleep(380)}
@@ -405,8 +406,10 @@ $('plant').onclick=async()=>{show('s5');document.body.classList.add('day','meado
  const slots=[-9,-4,0,4,9];
  PHOTOS.forEach((p,i)=>{const e=document.createElement('div');e.className='pol';
   e.style.setProperty('--r',slots[i]+'deg');
-  e.innerHTML='<div style="'+(p.src?`background-image:url(${p.src})`:'')+'">'+(p.src?'':'📷')+'</div>';
-  e.onclick=ev=>{$('mimg').style.backgroundImage=p.src?`url(${p.src})`:'';$('mimg').textContent=p.src?'':'📷';$('mcap').textContent=p.cap;$('modal').classList.add('on');hearts(ev.clientX,ev.clientY)};
+  const frame=document.createElement('div');frame.className='photo';
+  if(p.src){const img=document.createElement('img');img.src=photoUrl(p.src);img.alt=p.cap;frame.appendChild(img)}else frame.textContent='📷';
+  e.appendChild(frame);
+  e.onclick=ev=>{$('mimg').style.backgroundImage=p.src?`url("${photoUrl(p.src)}")`:'';$('mimg').textContent=p.src?'':'📷';$('mcap').textContent=p.cap;$('modal').classList.add('on');hearts(ev.clientX,ev.clientY)};
   $('gal').appendChild(e);setTimeout(()=>e.classList.add('in'),i*500)});
  $('modal').onclick=()=>$('modal').classList.remove('on');
  let k=0;const SL=$('shl'),SR=$('shr');(async function cyc(){SL.style.opacity=SR.style.opacity=0;await sleep(800);const t=SHAYARI[k++%SHAYARI.length].replace(/^“|”$/g,''),ls=t.split('\n');let a,b;
@@ -415,8 +418,10 @@ $('plant').onclick=async()=>{show('s5');document.body.classList.add('day','meado
 };
 
 MOMENTS.forEach((p,i)=>{const e=document.createElement('div');e.className='mp';e.style.setProperty('--r',[-3,2,-1.5,3][i%4]+'deg');
- e.innerHTML='<div style="'+(p.src?`background-image:url(${p.src})`:'')+'">'+(p.src?'':'📷')+'</div><p>'+p.cap+'</p>';
- e.onclick=()=>{$('mimg').style.backgroundImage=p.src?`url(${p.src})`:'';$('mimg').textContent=p.src?'':'📷';$('mcap').textContent=p.cap;$('modal').classList.add('on')};$('gg').appendChild(e)});
+ const frame=document.createElement('div');frame.className='photo';
+ if(p.src){const img=document.createElement('img');img.src=photoUrl(p.src);img.alt=p.cap;frame.appendChild(img)}else frame.textContent='📷';
+ const caption=document.createElement('p');caption.textContent=p.cap;e.append(frame,caption);
+ e.onclick=()=>{$('mimg').style.backgroundImage=p.src?`url("${photoUrl(p.src)}")`:'';$('mimg').textContent=p.src?'':'📷';$('mcap').textContent=p.cap;$('modal').classList.add('on')};$('gg').appendChild(e)});
 $('mom').onclick=()=>{$('gl').classList.add('on');$('gl').scrollTop=0};$('gx').onclick=()=>$('gl').classList.remove('on');
 $('open').onclick=()=>{$('gl').classList.remove('on');document.body.classList.remove('meadow');document.querySelectorAll('.pol').forEach(p=>p.remove());show('s7');
  $('pq').textContent=NAME.split(' ')[0]+', will you be mine forever?';
